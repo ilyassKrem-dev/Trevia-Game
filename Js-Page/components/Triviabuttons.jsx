@@ -10,7 +10,7 @@ function Triviabuttons(props) {
         backgroundColor: props.selected ? "#D6DBF5" : "",
       };
     
-    return (<button style={styles} onClick={props.click}  className="main--button but-text">{props.answer}</button>)
+    return (<button style={styles} onClick={props.click}  className="button but-text">{props.answer}</button>)
 }
 
 export default Triviabuttons

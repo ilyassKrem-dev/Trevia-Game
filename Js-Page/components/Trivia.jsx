@@ -1,6 +1,6 @@
 import { useState ,useEffect } from "react";
 import Triviabuttons from "./Triviabuttons";
-import { nanoid } from "nanoid";
+
 
 
 
@@ -12,6 +12,7 @@ function Trivia(props) {
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
     const [selectedAnswer, setSelectedAnswer] = useState(null);
+
     useEffect(() => {
         // Create a shuffled array that includes the correct answer and incorrect answers
         const allAnswers = [correctAnswer, ...incorrectAnswers];
@@ -29,6 +30,7 @@ function Trivia(props) {
     };
 
     function handleCLick(id) {
+        
         setSelectedAnswer(id);
         console.log(id)
 
@@ -43,11 +45,11 @@ function Trivia(props) {
     })
     return (
         <div>
-            <p className="main--text">
+            <p className="div--text">
                 {props.question}
             </p>
             {answersElement}
-            <div className="main--line"></div>
+            <div className="div--line"></div>
         </div>
     )
 }

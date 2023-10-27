@@ -24,7 +24,9 @@ function Main() {
     return (
         <main>
             {triviasDataElement}
+            <button className="main--button main--button-text">Check answers</button>
         </main>
+
     )
 }
 

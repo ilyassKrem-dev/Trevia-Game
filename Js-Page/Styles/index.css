@@ -30,14 +30,15 @@ main {
     justify-content: center;
     padding: 80px;
 }
-.main--text{
+
+.div--text{
     color: #293264;
     font-size: 20px;
     font-family: Karla;
     font-weight: 700;
     word-wrap: break-word
 }
-.main--button{
+.button{
     border-radius: 7.942px; 
     margin-top: 12px;
     padding: 8px 30px 8px 30px;
@@ -47,7 +48,7 @@ main {
     margin-bottom: 19px;
     margin-right: 20px;
 }
-.main--line{
+.div--line{
     height: 0.794px;
     background-color: #DBDEF0;
     margin-bottom: 15px;
@@ -61,3 +62,24 @@ main {
     font-weight: 500;
     line-height: normal;
 }
+
+.main--button{
+    
+    background-color: #4D5B9E;
+    border: none;
+    padding: 20px 40px 20px 40px;
+    flex-shrink: 0;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 50px;
+
+}
+.main--button-text{
+    color: #F5F7FB;
+    text-align: center;
+    font-family: Inter;
+    font-size: 18.24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}   
