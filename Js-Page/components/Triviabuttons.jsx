@@ -7,23 +7,29 @@ function Triviabuttons(props) {
         backgroundColor: props.change ? "#D6DBF5" : ""
     }*/
     const styles = {
-
+        
     }
     if(props.show) {
+        if(props.isCorrect) {
+            styles.backgroundColor = "#f5a721c7"; // Style the correct answer with a green background
+            styles.opacity=  1;
+            styles.border = "none"
+            styles.color= "black"
+        } else {
+            styles.backgroundColor = ""
+            styles.opacity=  0.5;
+        }
         if (props.selected) {
             styles.backgroundColor = props.isCorrect ? "#94D7A2" : "#F8BCBC";
             styles.opacity = props.isCorrect ? 1 : 0.5;
             styles.border = props.selected ? "none" : ""
-        } else {
-            styles.opacity = 0.5
-            
-        }
+        } 
         
     }  else {
         styles.backgroundColor = props.selected ? "#D6DBF5" : "";
         styles.border = props.selected ? "none" : ""
     }   
-    
+    console.log(props.correctAnswer)
     return (<button style={styles} onClick={props.click}  className="button but-text">{props.answer}</button>)
 }
 

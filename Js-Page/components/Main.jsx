@@ -9,12 +9,14 @@ function Main() {
     const [count , setCount] = useState(0)
     const [show , setShow] = useState(false)
     useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=5&category=15&type=multiple")
-            .then(res => res.json())
-                .then(data => setTriviasData(data.results))
-        
+        fetchNewTriviaData()   
     } , [])
     
+    function fetchNewTriviaData() {
+        fetch("https://opentdb.com/api.php?amount=5&category=15&type=multiple")
+            .then((res) => res.json())
+            .then((data) => setTriviasData(data.results));
+    }
     function handleClick() {
         let newCount = 0
         for(let i = 0 ; i < triviasData.length ; i++) {
@@ -36,6 +38,10 @@ function Main() {
         console.log(answers)
         setCount(newCount)
         setShow(true)
+        if(show) {
+            fetchNewTriviaData()
+            setShow(false)
+        }
     }
 
 
@@ -81,8 +87,8 @@ function Main() {
             
             {triviasDataElement}
             <div className="main--check">
-                <p>You scored {count    }/5 correct answers</p>
-                <button onClick={handleClick} className="main--button main--button-text">Check answers</button>
+                {show &&<p>You scored {count    }/5 correct answers</p>}
+                <button onClick={handleClick} className="main--button main--button-text">{show ?"Play again":"Check answers"}</button>
             </div>
             
             

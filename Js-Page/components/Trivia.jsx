@@ -48,7 +48,7 @@ function Trivia(props) {
             click={() => handleClick(answer)}
             show={props.show}
             isCorrect={isCorrect}
-            
+            correctAnswer={props.correctAnswer}
              />
     })
     return (
