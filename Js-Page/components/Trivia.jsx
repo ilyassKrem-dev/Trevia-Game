@@ -11,8 +11,10 @@ function Trivia(props) {
 
     const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
-    const [selectedAnswer, setSelectedAnswer] = useState(null);
-
+    const [selectedAnswer, setSelectedAnswer] = useState();
+    
+    const[count , setCount] = useState(1);
+   /* const [rightAnswers , setRightAnswers] = useState([])*/
     useEffect(() => {
         // Create a shuffled array that includes the correct answer and incorrect answers
         const allAnswers = [correctAnswer, ...incorrectAnswers];
@@ -29,18 +31,17 @@ function Trivia(props) {
         return shuffledArray;
     };
 
-    function handleCLick(id) {
+   function handleClick(id) {
+        setSelectedAnswer(id)
+        props.updateScore(props.question , id)
         
-        setSelectedAnswer(id);
-        console.log(id)
-
-    }   
+   }
     const answersElement = shuffledAnswers.map(answer => {
         return <Triviabuttons
             key={answer}
             answer={answer}
             selected={answer === selectedAnswer}
-            click={() => handleCLick(answer)}
+            click={() => handleClick(answer)}
              />
     })
     return (
