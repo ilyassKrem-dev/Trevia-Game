@@ -29,10 +29,10 @@ function Trivia(props) {
         return shuffledArray;
     };
 
-   function handleClick(id) {
+   function handleClick(answer) {
         if (!props.show) {
-            setSelectedAnswer(id)
-            props.updateScore(props.question , id)
+            setSelectedAnswer(answer)
+            props.updateScore(props.question , answer)
         }   
       
    }
@@ -46,7 +46,6 @@ function Trivia(props) {
             click={() => handleClick(answer)}
             show={props.show}
             isCorrect={isCorrect}
-            darkMode={props.darkMode}
              />
     })  
     return (

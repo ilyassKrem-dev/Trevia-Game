@@ -27,9 +27,8 @@ function Triviabuttons(props) {
         
     }  else {
 
-        styles.backgroundColor = props.selected && props.darkMode ? "rgba(50, 50, 50, 1)" :props.selected ? "#D6DBF5" : "";
+        styles.backgroundColor = props.selected ? "#D6DBF5" : "";
         styles.border = props.selected ? "none" : ""
-        styles.color = props.darkMode&&props.selected && "white"
 
     }   
     return (<button style={styles} onClick={props.click}  className="button but-text">{props.answer}</button>)
