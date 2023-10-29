@@ -1,13 +1,14 @@
 import Trivia from "./Trivia"
-import { useEffect } from "react"
-import { useState } from "react"
-
+import { useState , useEffect } from "react"
+import Confetti from 'react-confetti'
+import blobimg from "../Images/blobs.svg"
 function Main() {
 
     const [triviasData , setTriviasData] = useState([])
     const [answers , setAnswers] = useState([])
     const [count , setCount] = useState(0)
     const [show , setShow] = useState(false)
+    const [darkMode , setDarkMode] = useState(false)
     useEffect(() => {
         fetchNewTriviaData()   
     } , [])
@@ -35,13 +36,14 @@ function Main() {
             }
             
         }
-        console.log(answers)
+
         setCount(newCount)
         setShow(true)
         if(show) {
             fetchNewTriviaData()
             setShow(false)
         }
+        
     }
 
 
@@ -70,7 +72,10 @@ function Main() {
     
     }
 
-    const triviasDataElement = triviasData.map((trivia,index) => {
+    function switchDark() {
+        setDarkMode(prev => !prev)
+    }
+    const triviasDataElement = triviasData.map((trivia) => {
         
         return <Trivia 
             key={trivia.correct_answer} 
@@ -79,19 +84,33 @@ function Main() {
             correctAnswer={trivia.correct_answer}
             updateScore={handleNumRight}
             show={show}
-    
+            darkMode={darkMode}
             />
     })
     return (
-        <main>
-            
-            {triviasDataElement}
-            <div className="main--check">
-                {show &&<p>You scored {count    }/5 correct answers</p>}
-                <button onClick={handleClick} className="main--button main--button-text">{show ?"Play again":"Check answers"}</button>
+        <main className={darkMode ? "dark" : ""}>
+            <div className="box">
+                <div className="switch-dark-light">
+                    <p>Dark</p>
+                    <input type="checkbox" className="checkbox" id="checkbox" />
+                    <div onClick={switchDark} htmlFor="checkbox" className="checkbox-label">
+                        <i className="fas fa-moon"></i>
+                        <i className="fas fa-sun"></i>
+                        <span className="ball"></span>
+                    </div>
+                    <p>Light</p>
+                </div>
+
+                {show && count === triviasData.length && <Confetti />}
+                {triviasDataElement}
+                <div className="main--check">
+                    {show &&<p>You scored {count}/{triviasData.length} correct answers</p>}
+                    <button onClick={handleClick} className="main--button main--button-text">{show ?"Play again":"Check answers"}</button>
+                </div>
             </div>
             
             
+            <img className="blob-bot" src={blobimg} alt="" />
         </main>
 
     )

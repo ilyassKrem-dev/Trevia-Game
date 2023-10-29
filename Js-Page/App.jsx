@@ -1,5 +1,5 @@
 import Main from "./components/Main"
-import blobimg from "./Images/blobs.svg"
+
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
 
          <Main />
          
-         <img className="blob-bot" src={blobimg} alt="" />
+         
       </div>
     )
   }

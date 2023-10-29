@@ -1,10 +1,8 @@
 import { useState ,useEffect } from "react";
 import Triviabuttons from "./Triviabuttons";
 
-
-
-
 function Trivia(props) {
+
     const [incorrectAnswers , setIncorrectAnswers] = useState(props.incorrectAnswers)
 
     const [correctAnswer , setCorrectAnswer] = useState(props.correctAnswer)
@@ -14,9 +12,9 @@ function Trivia(props) {
     const [selectedAnswer, setSelectedAnswer] = useState();
     
     
-   /* const [rightAnswers , setRightAnswers] = useState([])*/
+   
     useEffect(() => {
-        // Create a shuffled array that includes the correct answer and incorrect answers
+        // Create a shuffled array of incorrect and correct 
         const allAnswers = [correctAnswer, ...incorrectAnswers];
         const shuffled = shuffleArray(allAnswers);
         setShuffledAnswers(shuffled);
@@ -38,19 +36,19 @@ function Trivia(props) {
         }   
       
    }
-    const answersElement = shuffledAnswers.map(answer => {
+    const answersElement = shuffledAnswers.map((answer,index) => {
         const isCorrect = answer === props.correctAnswer;
         
         return <Triviabuttons
-            key={answer}
+            key={index}
             answer={answer}
             selected={answer === selectedAnswer}
             click={() => handleClick(answer)}
             show={props.show}
             isCorrect={isCorrect}
-            correctAnswer={props.correctAnswer}
+            darkMode={props.darkMode}
              />
-    })
+    })  
     return (
         <div>
             <p className="div--text">
